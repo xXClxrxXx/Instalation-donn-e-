@@ -170,3 +170,11 @@ list.files(path)
     ## [73] "ERR7132555_2.fastq.gz"                            
     ## [74] "ERR7132556_1.fastq.gz"                            
     ## [75] "ERR7132556_2.fastq.gz"
+
+``` r
+# Forward and reverse fastq filenames have format: SAMPLENAME_R1_001.fastq and SAMPLENAME_R2_001.fastq
+fnFs <- sort(list.files(path, pattern="_1.fastq", full.names = TRUE))
+fnRs <- sort(list.files(path, pattern="_2.fastq", full.names = TRUE))
+# Extract sample names, assuming filenames have format: SAMPLENAME_XXX.fastq
+sample.names <- sapply(strsplit(basename(fnFs), "_"), `[`, 1)
+```
