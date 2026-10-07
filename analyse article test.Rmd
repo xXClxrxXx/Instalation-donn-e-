@@ -16,4 +16,8 @@ meta_data_table <- read.csv("SraRunTable.csv", sep = ",", header = TRUE)
 ```{r}
 library(dada2); packageVersion("dada2")
 ```
+```{r}
+path <- "/home/rstudio/Instalation-donn-e-/data" # CHANGE ME to the directory containing the fastq files after unzipping.
+list.files(path)
+```
 
