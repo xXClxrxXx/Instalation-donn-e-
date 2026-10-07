@@ -178,3 +178,9 @@ fnRs <- sort(list.files(path, pattern="_2.fastq", full.names = TRUE))
 # Extract sample names, assuming filenames have format: SAMPLENAME_XXX.fastq
 sample.names <- sapply(strsplit(basename(fnFs), "_"), `[`, 1)
 ```
+
+``` r
+plotQualityProfile(fnFs[1:2])
+```
+
+![](analyse-article-test_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
