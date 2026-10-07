@@ -190,3 +190,12 @@ plotQualityProfile(fnRs[1:2])
 ```
 
 ![](analyse-article-test_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+\# 1 forward et 2 reverse
+
+``` r
+# Place filtered files in filtered/ subdirectory
+filtFs <- file.path(path, "filtered", paste0(sample.names, "_F_filt.fastq.gz"))
+filtRs <- file.path(path, "filtered", paste0(sample.names, "_R_filt.fastq.gz"))
+names(filtFs) <- sample.names
+names(filtRs) <- sample.names
+```
