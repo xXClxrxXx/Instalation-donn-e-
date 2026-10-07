@@ -47,3 +47,49 @@ names(filtFs) <- sample.names
 names(filtRs) <- sample.names
 ```
 
+```{r}
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(240,160),
+              maxN=0, maxEE=c(2,2), truncQ=2, rm.phix=TRUE,
+              compress=TRUE, multithread=TRUE) # On Windows set multithread=FALSE (only needed for filterAndTrim)
+head(out)
+```
+```{r}
+length(fnFs); length(fnRs); length(filtFs); length(filtRs)
+```
+```{r}
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(240,160),
+                     maxN=0, maxEE=c(2,2), truncQ=2, rm.phix=TRUE,
+                     compress=TRUE, multithread=FALSE)
+head(out)
+```
+```{r}
+data.frame(F = basename(fnFs), R = basename(fnRs))
+```
+```{r}
+library(ShortRead)
+nF <- sapply(fnFs, function(f) fastq.geometry(f)[1])
+nR <- sapply(fnRs, function(f) fastq.geometry(f)[1])
+res <- data.frame(echantillon = basename(fnFs), nF, nR, ok = nF == nR, row.names = NULL)
+res
+res[!res$ok, ]
+```
+
+```{r}
+res[!res$ok, ]
+```
+```{r}
+f <- fnRs[grep("ERR7132482", fnRs)]
+print(f)
+length(f)   # doit valoir 1
+
+con <- gzfile(f, "rb")
+r <- try(while (length(readBin(con, "raw", 1e7)) > 0) {}, silent = TRUE)
+close(con)
+r
+```
+```{r}
+statut <- system2("gzip", c("-t", shQuote(f)))
+statut
+```
+
+
