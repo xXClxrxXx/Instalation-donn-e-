@@ -9,3 +9,11 @@ output: github_document
 # 3ème commande data2 changer ce qu'il y a entre "" pour qu eça corresponde à nos donner.
 # retéléchrargement écrase fichier et prend des nouveau 
 
+```{r}
+meta_data_table <- read.csv("SraRunTable.csv", sep = ",", header = TRUE)
+```
+
+```{r}
+library(dada2); packageVersion("dada2")
+```
+
