@@ -35,4 +35,7 @@ sample.names <- sapply(strsplit(basename(fnFs), "_"), `[`, 1)
 ```{r}
 plotQualityProfile(fnFs[1:2])
 ```
+```{r}
+plotQualityProfile(fnRs[1:2])
+```
 

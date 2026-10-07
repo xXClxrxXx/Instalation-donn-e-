@@ -184,3 +184,9 @@ plotQualityProfile(fnFs[1:2])
 ```
 
 ![](analyse-article-test_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+``` r
+plotQualityProfile(fnRs[1:2])
+```
+
+![](analyse-article-test_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
