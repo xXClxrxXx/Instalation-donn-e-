@@ -88,4 +88,8 @@ head(mergers[[1]])
 seqtab <- makeSequenceTable(mergers)
 dim(seqtab)
 ```
+```{r}
+# Inspect distribution of sequence lengths
+table(nchar(getSequences(seqtab)))
+```
 
