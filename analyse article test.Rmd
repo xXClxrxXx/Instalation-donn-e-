@@ -120,4 +120,5 @@ head(track)
 
 #Allongement de la sélection des donner prise sur les plot quality car le fragmetn fait 444 il manquait donc une 20 de base j'ai donc ralonger la sélection de 20 pour R et de 10 pour s. 
 
+#reprendre au second calcul d'erreur celui de errF
 
