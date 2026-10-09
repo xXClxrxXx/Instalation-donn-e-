@@ -61,4 +61,10 @@ out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(230,190),
               compress=TRUE, multithread= FALSE) # On Windows set multithread=FALSE (only needed for filterAndTrim)
 head(out)
 ```
+```{r}
+errF <- learnErrors(filtFs, multithread=TRUE)
+```
+```{r}
+errR <- learnErrors(filtRs, multithread=TRUE)
+```
 
