@@ -56,7 +56,7 @@ names(filtRs) <- sample.names
 ```
 
 ```{r}
-out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(230,190),
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(250,200),
               maxN=0, maxEE=c(2,2), truncQ=2, rm.phix=TRUE,
               compress=TRUE, multithread= FALSE) # On Windows set multithread=FALSE (only needed for filterAndTrim)
 head(out)
@@ -116,5 +116,8 @@ colnames(track) <- c("input", "filtered", "denoisedF", "denoisedR", "merged", "n
 rownames(track) <- sample.names
 head(track)
 ```
+# nouveau lien discord descriptoin de paramètre que l'on petu mettre en tête de chunck. Pour le knit : récup résultat déjà calculer pour eviter que ça prenner 1000 ans. Include = FALSE, il ne le recalcule aps au moment du knit. Chercher d'autre info en plus sur le doc. 
+
+#Allongement de la sélection des donner prise sur les plot quality car le fragmetn fait 444 il manquait donc une 20 de base j'ai donc ralonger la sélection de 20 pour R et de 10 pour s. 
 
 
