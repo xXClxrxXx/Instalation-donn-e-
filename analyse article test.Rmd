@@ -146,8 +146,60 @@ head(taxa.print)
 install.packages("igraph", type = "source") 
 BiocManager::install("phyloseq", update = FALSE, force = TRUE)
 ```
+```{r}
+library(phyloseq); packageVersion("phyloseq")
+```
 
+```{python}
+library(Biostrings); packageVersion("Biostrings")
+```
+```{r}
+library(ggplot2); packageVersion("ggplot2")
+```
+```{r}
+theme_set(theme_bw())
+```
 
+```{r}
+meta <- read.csv("SraRunTable.csv")
+colnames(meta)      # regarde les colonnes disponibles
+head(meta)
 
+samples.out <- rownames(seqtab.nochim)
+samdf <- meta[match(samples.out, meta$Run), ]
+rownames(samdf) <- samples.out
+```
+```{r}
+all(samples.out %in% meta$Run)   # doit donner TRUE
+sum(is.na(samdf$Run))            # doit donner 0
+```
 
+```{r}
+ps <- phyloseq(otu_table(seqtab.nochim, taxa_are_rows=FALSE),
+               sample_data(samdf),
+               tax_table(taxa))
+ps <- prune_samples(sample_names(ps) != "ERR7132483", ps) # Remove mock sample
+ps <- prune_samples(sample_names(ps) != "ERR7132492", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132494", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132495", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132496", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132509", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132551", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132552", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132553", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132554", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132555", ps)
+ps <- prune_samples(sample_names(ps) != "ERR7132556", ps)
+```
+
+```{r}
+dna <- Biostrings::DNAStringSet(taxa_names(ps))
+names(dna) <- taxa_names(ps)
+ps <- merge_phyloseq(ps, dna)
+taxa_names(ps) <- paste0("ASV", seq(ntaxa(ps)))
+ps
+```
+```{r}
+sample_variables(ps.full)
+```
 
