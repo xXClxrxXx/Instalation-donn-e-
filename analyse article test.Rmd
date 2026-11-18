@@ -142,6 +142,10 @@ rownames(taxa.print) <- NULL
 head(taxa.print)
 ```
 
+```{r}
+install.packages("igraph", type = "source") 
+BiocManager::install("phyloseq", update = FALSE, force = TRUE)
+```
 
 
 
