@@ -116,10 +116,34 @@ track <- cbind(out, sapply(dadaFs, getN), sapply(dadaRs, getN), sapply(mergers, 
 # If processing a single sample, remove the sapply calls: e.g. replace sapply(dadaFs, getN) with getN(dadaFs)
 colnames(track) <- c("input", "filtered", "denoisedF", "denoisedR", "merged", "nonchim")
 rownames(track) <- sample.names
-view(track)
+head(track)
 ```
 # nouveau lien discord descriptoin de paramètre que l'on petu mettre en tête de chunck. Pour le knit : récup résultat déjà calculer pour eviter que ça prenner 1000 ans. Include = FALSE, il ne le recalcule aps au moment du knit. Chercher d'autre info en plus sur le doc. 
 
 #Allongement de la sélection des donner prise sur les plot quality car le fragmetn fait 444 il manquait donc une 20 de base j'ai donc ralonger la sélection de 20 pour R et de 10 pour F. 
+
+```{r}
+download.file(
+  "https://zenodo.org/record/1172783/files/silva_nr_v132_train_set.fa.gz?download=1",
+  destfile = "silva_nr_v132_train_set.fa.gz",
+  mode = "wb")
+```
+
+
+```{r}
+taxa <- assignTaxonomy(seqtab.nochim,
+                       "silva_nr_v132_train_set.fa.gz",
+                       multithread = TRUE)
+```
+
+```{r}
+taxa.print <- taxa # Removing sequence rownames for display only
+rownames(taxa.print) <- NULL
+head(taxa.print)
+```
+
+
+
+
 
 
